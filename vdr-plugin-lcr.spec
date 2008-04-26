@@ -2,7 +2,7 @@
 %define plugin	lcr
 %define name	vdr-plugin-%plugin
 %define version	0.0.8
-%define rel	12
+%define rel	13
 
 Summary:	VDR plugin: Displays telephone rates on OSD
 Name:		%name
@@ -12,8 +12,10 @@ Group:		Video
 License:	GPL
 URL:		http://lcr.vdr-developer.org/
 Source:		http://lcr.vdr-developer.org/downloads/vdr-%plugin-%version.tar.bz2
+Patch0:		lcr-91_vdr-1.5.15.dpatch
+Patch1:		lcr-0.0.8-i18n-1.6.patch
 BuildRoot:	%{_tmppath}/%{name}-buildroot
-BuildRequires:	vdr-devel >= 1.4.1-6
+BuildRequires:	vdr-devel >= 1.6.0
 Requires:	vdr-abi = %vdr_abi
 
 %description
@@ -24,6 +26,9 @@ For the retrieval an additional (perl) script is needed (retrieve-data.pl).
 
 %prep
 %setup -q -n %plugin-%version
+%patch0 -p1
+%patch1 -p1
+%vdr_plugin_prep
 chmod 0644 README*
 
 %vdr_plugin_params_begin %plugin
@@ -55,5 +60,3 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %doc README* HISTORY CONTRIBUTORS skins
 %{_bindir}/vdr-lcr-retrieve_data.pl
-
-
