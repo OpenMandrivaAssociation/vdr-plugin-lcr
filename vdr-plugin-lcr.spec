@@ -2,7 +2,7 @@
 %define plugin	lcr
 %define name	vdr-plugin-%plugin
 %define version	0.0.8
-%define rel	14
+%define rel	15
 
 Summary:	VDR plugin: Displays telephone rates on OSD
 Name:		%name
