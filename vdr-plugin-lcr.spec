@@ -1,18 +1,13 @@
-
 %define plugin	lcr
-%define name	vdr-plugin-%plugin
-%define version	0.0.9
-%define rel	2
 
 Summary:	VDR plugin: Displays telephone rates on OSD
-Name:		%name
-Version:	%version
-Release:	%mkrel %rel
+Name:		vdr-plugin-%plugin
+Version:	0.0.9
+Release:	3
 Group:		Video
 License:	GPL
 URL:		http://lcr.vdr-developer.org/
 Source:		http://lcr.vdr-developer.org/downloads/vdr-%plugin-%version.tar.bz2
-BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	vdr-devel >= 1.6.0
 Requires:	vdr-abi = %vdr_abi
 
@@ -37,20 +32,10 @@ param=--script=SCRIPT
 %vdr_plugin_build
 
 %install
-rm -rf %{buildroot}
 %vdr_plugin_install
 
 install -d -m755 %{buildroot}%{_bindir}
 install -m755 contrib/*.pl %{buildroot}%{_bindir}
-
-%clean
-rm -rf %{buildroot}
-
-%post
-%vdr_plugin_post %plugin
-
-%postun
-%vdr_plugin_postun %plugin
 
 %files -f %plugin.vdr
 %defattr(-,root,root)
