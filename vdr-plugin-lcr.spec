@@ -3,7 +3,7 @@
 Summary:	VDR plugin: Displays telephone rates on OSD
 Name:		vdr-plugin-%plugin
 Version:	0.0.9
-Release:	4
+Release:	5
 Group:		Video
 License:	GPL
 URL:		http://lcr.vdr-developer.org/
